@@ -11,9 +11,6 @@ object Person{
 }
 
 
-Person("Edwin Rajagukguk").fullName
-
-
 class Director(
                 val firstName: String,
                 val lastName: String,
