@@ -69,16 +69,8 @@ object Film {
     else film2.director
 
 }
-val prestige: Film = bestFilmByChristopherNolan() //Type
 
 
-new Film("Last Action Hero", 1993, mcTiernan) // Type
-
-Film("Last Action Hero", 1993, mcTiernan) //Value
-
-Film.newer(highPlainsDrifter, thomasCrownAffair) //Value
-
-Film.type //Value
 
 
 
