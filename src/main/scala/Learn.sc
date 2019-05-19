@@ -10,50 +10,29 @@ object Person{
     fullName.split(" ")(1))
 }
 
-
-class Director(
+//With case class
+case class Director(
                 val firstName: String,
                 val lastName: String,
                 val yearOfBirth: Int) {
   def name: String =  s"$firstName $lastName"
-  def copy(
-            firstName: String = this.firstName,
-            lastName: String = this.lastName,
-            yearOfBirth: Int = this.yearOfBirth) =
-    new Director(firstName, lastName, yearOfBirth)
 }
 
 object Director {
-  def apply(firstName: String, lastName: String, yearOfBirth: Int):
-    Director = new Director(firstName, lastName, yearOfBirth)
   def older(director1: Director, director2: Director): Director =
     if (director1.yearOfBirth < director2.yearOfBirth) director1 else
       director2
 }
 
-class Film(
-            val name: String,
-            val yearOfRelease: Int,
-            val imdbRating: Double,
-            val director: Director) {
+case class Film(name: String, yearOfRelease: Int,
+            imdbRating: Double, director: Director) {
   def directorsAge =
     director.yearOfBirth - yearOfRelease
   def isDirectedBy(director: Director) =
     this.director == director
-  def copy(
-            name: String = this.name,
-            yearOfRelease: Int = this.yearOfRelease, imdbRating: Double = this.imdbRating,
-            director: Director = this.director) =
-    new Film(name, yearOfRelease, imdbRating, director)
 }
 
 object Film {
-  def apply(
-             name: String,
-             yearOfRelease: Int,
-             imdbRating: Double,
-             director: Director): Film =
-    new Film(name, yearOfRelease, imdbRating, director)
   def newer(film1: Film, film2: Film): Film =
     if (film1.yearOfRelease < film2.yearOfRelease) film1 else film2
   def highestRating(film1: Film, film2: Film): Double = {
@@ -66,6 +45,17 @@ object Film {
     else film2.director
 
 }
+
+object Dad{
+  def rate(film: Film): Double = {
+    film.director match {
+      case Director("Clint", "Eastwood", _) => 10.0
+      case Director("John", "McTierman", _) => 7.0
+      case Director(_, _, _) => 3.0
+    }
+  }
+}
+
 
 
 
